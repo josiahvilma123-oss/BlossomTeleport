@@ -1,0 +1,102 @@
+name: BlossomTeleport
+version: '1.0.0'
+main: com.blossomsmp.teleport.BlossomTeleport
+api-version: '1.21'
+author: BlossomSMP
+description: TPA, homes, spawn, back and random teleport for Blossom SMP
+softdepend: [BlossomCombat]
+
+commands:
+  tpa:
+    description: Ask to teleport to a player
+    usage: /tpa <player>
+    permission: blossomteleport.tpa
+  tpahere:
+    description: Ask a player to teleport to you
+    usage: /tpahere <player>
+    permission: blossomteleport.tpahere
+  tpaccept:
+    description: Accept a teleport request
+    usage: /tpaccept [player]
+    aliases: [tpyes]
+    permission: blossomteleport.tpa
+  tpdeny:
+    description: Deny a teleport request
+    usage: /tpdeny [player]
+    aliases: [tpno]
+    permission: blossomteleport.tpa
+  tpacancel:
+    description: Cancel a request you sent
+    usage: /tpacancel [player]
+    permission: blossomteleport.tpa
+  tptoggle:
+    description: Turn teleport requests on or off
+    usage: /tptoggle
+    permission: blossomteleport.tptoggle
+  rtp:
+    description: Teleport to a random place in the wild
+    usage: /rtp
+    aliases: [wild, randomtp]
+    permission: blossomteleport.rtp
+  home:
+    description: Teleport to one of your homes
+    usage: /home [name]
+    aliases: [h]
+    permission: blossomteleport.home
+  homes:
+    description: Open your homes menu
+    usage: /homes
+    permission: blossomteleport.home
+  sethome:
+    description: Set a home where you are standing
+    usage: /sethome [name]
+    permission: blossomteleport.home
+  delhome:
+    description: Delete one of your homes
+    usage: /delhome <name>
+    permission: blossomteleport.home
+  spawn:
+    description: Teleport to spawn
+    usage: /spawn
+    permission: blossomteleport.spawn
+  setspawn:
+    description: Set the server spawn where you are standing
+    usage: /setspawn
+    permission: blossomteleport.setspawn
+  back:
+    description: Go back to where you were (or where you died)
+    usage: /back
+    permission: blossomteleport.back
+  blossomtp:
+    description: BlossomTeleport admin command
+    usage: /blossomtp reload
+    aliases: [btp]
+    permission: blossomteleport.admin
+
+permissions:
+  blossomteleport.tpa:
+    default: true
+  blossomteleport.tpahere:
+    default: true
+  blossomteleport.tptoggle:
+    default: true
+  blossomteleport.rtp:
+    default: true
+  blossomteleport.home:
+    default: true
+  blossomteleport.spawn:
+    default: true
+  blossomteleport.back:
+    default: true
+  blossomteleport.setspawn:
+    default: op
+  blossomteleport.admin:
+    default: op
+  blossomteleport.homes.unlimited:
+    default: false
+  blossomteleport.bypass.warmup:
+    default: op
+  blossomteleport.bypass.cooldown:
+    default: op
+  blossomteleport.bypass.toggle:
+    default: op

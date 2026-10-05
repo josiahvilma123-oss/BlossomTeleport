@@ -1,0 +1,182 @@
+# =========================================================
+#   ✿ BlossomTeleport ✿  -  made for Blossom SMP
+#   Change anything here, then type:  /blossomtp reload
+#   Colours: &a &b &c ... and hex like &#FF69B4
+#   Sounds use Minecraft names like: entity.enderman.teleport
+# =========================================================
+
+# ---------- Teleporting (used by everything below) ----------
+teleport:
+  # Seconds you have to stand still before teleporting. 0 = instant.
+  warmup: 3
+  # Cancel the teleport if you move or get hit while waiting
+  cancel-on-move: true
+  cancel-on-damage: true
+  # Stop players in combat (BlossomCombat) from teleporting
+  block-in-combat: true
+  sound: "entity.enderman.teleport"
+  particles: true
+  # Show a big title on screen after teleporting
+  title: true
+
+# ---------- /tpa  /tpahere ----------
+tpa:
+  enabled: true
+  # Seconds before a request runs out
+  timeout: 60
+  # Seconds a player must wait between sending requests
+  cooldown: 10
+  # Sound the other player hears when they get a request
+  request-sound: "block.note_block.pling"
+
+# ---------- /rtp ----------
+rtp:
+  enabled: true
+  # Seconds between uses (300 = 5 minutes)
+  cooldown: 300
+  # Players land somewhere between these distances from the center
+  min-distance: 300
+  max-distance: 3000
+  center-x: 0
+  center-z: 0
+  # How many random spots to try before giving up
+  max-tries: 15
+  # Worlds where /rtp is NOT allowed
+  blocked-worlds:
+    - world_the_end
+  # Never land on these
+  unsafe-blocks:
+    - LAVA
+    - WATER
+    - MAGMA_BLOCK
+    - CACTUS
+    - FIRE
+    - SOUL_FIRE
+    - CAMPFIRE
+    - SOUL_CAMPFIRE
+    - POWDER_SNOW
+    - SWEET_BERRY_BUSH
+    - POINTED_DRIPSTONE
+    - KELP
+    - SEAGRASS
+    - BUBBLE_COLUMN
+
+# ---------- /home  /sethome  /delhome  /homes ----------
+homes:
+  enabled: true
+  # Seconds between /home uses
+  cooldown: 5
+  # How many homes normal players get
+  default-limit: 3
+  # Give more homes with a permission:  blossomteleport.homes.<name>
+  # Example:  lp group admin permission set blossomteleport.homes.staff true
+  # You can also use numbers:  blossomteleport.homes.10  =  10 homes
+  limits:
+    staff: 10
+  # Worlds where players can't set homes
+  blocked-worlds: []
+  menu:
+    title: "&#FF69B4✿ &lYour Homes"
+    home-item: RED_BED
+    empty-item: GRAY_STAINED_GLASS_PANE
+    home-name: "&#FFB6C1&l{home}"
+    home-lore:
+      - "&7World: &f{world}"
+      - "&7Location: &f{x}, {y}, {z}"
+      - ""
+      - "&a▶ Left-click &7to teleport"
+      - "&c✖ Shift + Right-click &7to delete"
+    empty-name: "&7Empty home slot"
+    empty-lore:
+      - "&7Type &f/sethome <name>"
+      - "&7to save a home here."
+
+# ---------- /spawn  /setspawn ----------
+spawn:
+  enabled: true
+  cooldown: 0
+  # Send brand new players to spawn the first time they join
+  teleport-on-first-join: true
+  # Send players to spawn every time they join
+  teleport-on-join: false
+  # Respawn at spawn when you die (if you have no bed or anchor)
+  teleport-on-respawn: true
+
+# ---------- /back ----------
+back:
+  enabled: true
+  cooldown: 30
+  # Let /back take you to where you died
+  on-death: true
+
+# ---------- Messages ----------
+# Leave a message as "" to turn it off.
+messages:
+  prefix: "&#FF69B4✿ &8» "
+  no-permission: "&cYou don't have permission to do that."
+  players-only: "&cOnly players can use this."
+  player-not-found: "&cThat player isn't online."
+  disabled: "&cThat feature is turned off."
+  cooldown: "&cPlease wait &f{time} &cbefore doing that again."
+  in-combat: "&cYou can't teleport while in combat!"
+  reloaded: "&aBlossomTeleport reloaded!"
+
+  warmup: "&7Teleporting in &f{seconds}s&7... don't move!"
+  warmup-actionbar: "&#FFB6C1Teleporting in &f{seconds}&#FFB6C1..."
+  warmup-cancelled: "&cTeleport cancelled because you moved or got hit."
+  teleport-failed: "&cTeleport failed. Please try again."
+  title: "&#FF69B4✿ Teleported ✿"
+  subtitle: "&7{place}"
+
+  # TPA
+  tpa-self: "&cYou can't send a request to yourself."
+  tpa-sent: "&7Request sent to &f{player}&7. They have &f{seconds}s &7to accept."
+  tpa-received: "&f{player} &7wants to teleport &fto you&7."
+  tpahere-received: "&f{player} &7wants &fyou &7to teleport to them."
+  tpa-accept-button: "&a&l[ACCEPT]"
+  tpa-deny-button: "&c&l[DENY]"
+  tpa-accept-hover: "&aClick to accept"
+  tpa-deny-hover: "&cClick to deny"
+  tpa-already-sent: "&cYou already sent &f{player} &ca request."
+  tpa-target-toggled: "&f{player} &cisn't accepting teleport requests."
+  tpa-no-requests: "&cYou don't have any teleport requests."
+  tpa-accepted-sender: "&f{player} &aaccepted your request!"
+  tpa-accepted-target: "&aYou accepted &f{player}&a's request."
+  tpa-denied-sender: "&f{player} &cdenied your request."
+  tpa-denied-target: "&7You denied &f{player}&7's request."
+  tpa-expired-sender: "&7Your request to &f{player} &7ran out."
+  tpa-expired-target: "&7The request from &f{player} &7ran out."
+  tpa-cancelled: "&7Request cancelled."
+  tpa-cancelled-target: "&f{player} &7cancelled their request."
+  tpa-nothing-to-cancel: "&cYou don't have any requests to cancel."
+  tpa-toggled-off: "&7Teleport requests are now &cOFF&7."
+  tpa-toggled-on: "&7Teleport requests are now &aON&7."
+  tpa-teleported: "&aTeleported to &f{player}&a!"
+
+  # Homes
+  home-set: "&aHome &f{home} &aset!"
+  home-updated: "&aHome &f{home} &amoved to where you are."
+  home-deleted: "&7Home &f{home} &7deleted."
+  home-not-found: "&cYou don't have a home called &f{home}&c."
+  home-no-homes: "&cYou don't have any homes yet. Use &f/sethome&c."
+  home-limit: "&cYou can only have &f{limit} &chomes. Delete one with &f/delhome&c."
+  home-bad-name: "&cHome names can only use letters, numbers, _ and - (max 16)."
+  home-blocked-world: "&cYou can't set a home in this world."
+  home-teleported: "&aWelcome home! &7({home})"
+  delhome-usage: "&cUse: &f/delhome <name>"
+
+  # Spawn
+  spawn-not-set: "&cSpawn hasn't been set yet."
+  spawn-set: "&aSpawn set to where you are standing!"
+  spawn-teleported: "&aWelcome to spawn!"
+
+  # Back
+  back-none: "&cThere's nowhere to go back to."
+  back-teleported: "&aTeleported back to your last spot."
+  back-death-hint: "&7Type &f/back &7to return to where you died."
+
+  # RTP
+  rtp-searching: "&7Finding a safe spot in the wild..."
+  rtp-failed: "&cCouldn't find a safe spot. Try again!"
+  rtp-blocked-world: "&cYou can't use /rtp in this world."
+  rtp-teleported: "&aYou landed at &f{x}, {z}&a. Good luck!"
